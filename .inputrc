@@ -1,0 +1,5 @@
+# mac osx style word jumping
+"\e[1;9D": backward-word
+"\e[1;9C": forward-word
+# rad ls -la shortcut
+"\el": 'ls -la\015'
