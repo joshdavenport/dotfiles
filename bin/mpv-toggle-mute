@@ -1,0 +1,1 @@
+echo 'cycle mute' | /usr/local/bin/socat - /tmp/mpvsocket

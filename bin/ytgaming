@@ -1,0 +1,10 @@
+#!/bin/bash
+channel=$1
+quality=$2
+screen=$3
+
+if [ -z "$quality" ]; then
+   quality=source
+fi
+
+livestreamer --hls-segment-threads 4 --hls-live-edge 6 --player="'/Applications/mpv.app/Contents/MacOS/mpv' --no-border --ontop --screen=$screen" https://www.youtube.com/watch?v="$channel" "$quality"
