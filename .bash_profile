@@ -1,4 +1,3 @@
-source ~/.profile
 for file in ~/.{aliases,extra,bash_prompt}; do
     [ -r "$file" ] && source "$file"
 done
