@@ -1,5 +1,5 @@
 source ~/.profile
-for file in ~/.{aliases,extra,bash_prompt}; do
+for file in ~/.{aliases,extra,bash_prompt,functions}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
@@ -13,6 +13,6 @@ export HISTTIMEFORMAT='%F %T '
 if [ -x /usr/local/bin/figlet -a -x /usr/local/bin/lolcat -a -x /usr/local/bin/fortune ]; then
     echo ''
     date +"%a %e %h" | figlet -f larry3d | lolcat
-    fortune -n 300
+    fortune -n 280
     echo ''
 fi
