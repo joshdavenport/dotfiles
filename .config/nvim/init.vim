@@ -1,6 +1,3 @@
-" Search {{{
-"set noincsearch       " search as characters are entered
-
 " Leader & Mappings
 let mapleader="," " leader is comma
 
