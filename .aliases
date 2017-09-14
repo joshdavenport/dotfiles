@@ -8,6 +8,7 @@ alias -- -="cd -"
 
 # because
 alias vim="nvim"
+alias photoshop="open -a /Applications/Adobe\ Photoshop\ CC\ 2017/Adobe\ Photoshop\ CC\ 2017.app/Contents/MacOS/Adobe\ Photoshop\ CC\ 2017"
 
 # common ls/rm aliases
 # Detect which `ls` flavor is in use
