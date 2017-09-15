@@ -1,6 +1,6 @@
 # Good Read Quotes
 
-Takes a goodreads quote by tag archive and turns it into a f
+Takes a goodreads quote by tag archive and turns it into a file ready for converting to fortune ready .dat file
 
      python goodreadsquotes.py https://www.goodreads.com/quotes/tag/philosophy > goodreads-philosophy
 
