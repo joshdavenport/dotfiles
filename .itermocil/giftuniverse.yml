@@ -1,0 +1,17 @@
+windows:
+  - name: menkind
+    root: ~/www/giftuniverse/giftuniverse_rm
+    layout: main-vertical
+    panes:
+      - commands:
+          - clear
+          - vagrant ssh -- -t 'cd public_html; /bin/bash'
+        focus: true
+      - commands:
+        - clear 
+        - sleep 4
+        - vagrant ssh -- -t 'cd public_html; /bin/bash; grunt exec:menkind && grunt less:menkind && grunt watch:menkind'
+      - commands:
+        - clear
+        - pwd | cowsay
+        - echo

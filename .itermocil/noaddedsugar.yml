@@ -1,0 +1,17 @@
+windows:
+  - name: noaddedsugar
+    root: ~/www/noaddedsugar/noaddedsugar
+    layout: main-vertical
+    panes:
+      - commands:
+          - clear
+          - vagrant ssh -- -t 'cd public_html; /bin/bash'
+        focus: true
+      - commands:
+        - clear 
+        - sleep 4
+        - vagrant ssh -- -t 'cd public_html; /bin/bash; grunt exec:nas && grunt less:nas && grunt watch:nas'
+      - commands:
+        - clear
+        - pwd | cowsay
+        - echo
