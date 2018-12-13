@@ -1,3 +1,12 @@
+
+# projects
+alias projectgu="cd ~/www/giftuniverse/giftuniverse_rm && itermocil giftuniverse --here"
+
+# general
+alias rid='head -n 1 /dev/random | md5 | cut -c 1-8'
+alias crid="rid | tr -d '\n' | pbcopy"
+alias pwdcp="pwd | pbcopy"
+
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
@@ -6,9 +15,13 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
+# chrome, mainly supports chrome headless
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+
 # because
 alias vim="nvim"
 alias photoshop="open -a /Applications/Adobe\ Photoshop\ CC\ 2017/Adobe\ Photoshop\ CC\ 2017.app/Contents/MacOS/Adobe\ Photoshop\ CC\ 2017"
+alias getanicenewwallpaper="wget https://source.unsplash.com/random/1920x1200/\?minimal --output-document=$(date +%s).jpg"
 
 # common ls/rm aliases
 # Detect which `ls` flavor is in use
