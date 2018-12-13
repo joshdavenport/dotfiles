@@ -10,8 +10,11 @@ windows:
       - commands:
         - clear 
         - sleep 4
-        - vagrant ssh -- -t 'cd public_html; /bin/bash; grunt exec:menkind && grunt less:menkind && grunt watch:menkind'
+        - vagrant ssh -- -t 'cd public_html; grunt exec:menkind && grunt less:menkind && grunt watch:menkind'
       - commands:
+        - cd htdocs
+        - chmod -R 777 var/
+        - chmod -R 777 pub/static/
         - clear
-        - pwd | cowsay
+        - pwd | cowsay | lolcat
         - echo
