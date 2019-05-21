@@ -129,7 +129,7 @@ prompt_zsh_battery_level() {
     fi
 
     if [ $(bc <<< "scale=2 ; $percentage>=50") = '1' ] && [ $(bc <<< "scale=2 ; $percentage<75") = '1' ]  
-    then symbol="\uf242" ; color='yellow}';
+    then symbol="\uf242" ; color='yellow';
         #50%
     fi
 
@@ -191,3 +191,6 @@ POWERLEVEL9K_TIME_FOREGROUND='black'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(zsh_tfl zsh_battery_level time)
+
+# Aliases
+alias ls='lsd'
