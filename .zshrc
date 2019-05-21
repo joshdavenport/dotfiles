@@ -93,11 +93,8 @@ zshcolors() {
   for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"
 }
 
-#EMOJI=(💩 🐦 🚀 🐞 🎨 🍕 🐭 👽 ☕️ 🔬 💀 🐷 🐼 🐶 🐸 🐧 🐳 🍔 🍣 🍻 🔮 💰 💎 💾 💜 🍪 🌞 🌍 🐌 🐓 🍄 😶 😎 👻 💡 💯 )
-EMOJI=(💩)
-function random_emoji {
-  echo -n "$EMOJI[$RANDOM%$#EMOJI+1]"
-}
+EMOJIS=(💩 🐦 🚀 🐞 🎨 🍕 🐭 👽 ☕️ 🔬 💀 🐷 🐼 🐶 🐸 🐧 🐳 🍔 🍣 🍻 🔮 💰 💎 💾 💜 🍪 🌞 🌍 🐌 🐓 🍄 😶 😎 👻 💡 💯 )
+SELECTED_EMOJI=${EMOJIS[$RANDOM % ${#EMOJIS[@]}]};
 
 prompt_zsh_tfl() {
     local content=""
@@ -163,7 +160,7 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%K{white}%k"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{248} $(random_emoji) %f%F{248}%k\ue0b0%f "
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{248} ${SELECTED_EMOJI} %f%F{248}%k\ue0b0%f "
 #POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{white}%F{black} `date +%T` \UE12E %f%k%F{white}%f "
 
 #POWERLEVEL9K_ZSH_BATTERY_LEVEL_BACKGROUND='040'
