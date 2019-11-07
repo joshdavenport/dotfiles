@@ -1,3 +1,5 @@
+# tmux
+alias t="tmux"
 
 # projects
 alias projectgu="cd ~/www/giftuniverse/giftuniverse_rm && itermocil giftuniverse --here"
