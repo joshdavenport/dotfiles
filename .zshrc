@@ -10,7 +10,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting autojump)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-for file in ~/.{aliases,extra,functions,theme1}; do
+for file in ~/.{aliases,extra,functions,theme}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
