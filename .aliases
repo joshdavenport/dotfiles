@@ -11,6 +11,7 @@ alias projectgu="cd ~/www/giftuniverse/giftuniverse_rm && itermocil giftuniverse
 alias rid='head -n 1 /dev/random | md5 | cut -c 1-8'
 alias crid="rid | tr -d '\n' | pbcopy"
 alias pwdcp="pwd | pbcopy"
+alias timestamp="date '+%s'"
 
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
