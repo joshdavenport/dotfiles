@@ -3,6 +3,7 @@ export ZSH=/Users/joshuadavenport/.oh-my-zsh
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE='nerdfont-complete'
+ZSH_CUSTOM="$HOME/.config/oh-my-zsh/custom"
 
 # plugins
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting autojump)
