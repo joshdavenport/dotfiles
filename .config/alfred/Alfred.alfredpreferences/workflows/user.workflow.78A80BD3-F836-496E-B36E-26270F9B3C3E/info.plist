@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.vitaliyribachenko.alfred-js-evaluate</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>A1BF786D-2528-41FB-9E97-EF303E243BD0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FA59734B-0D93-4DEE-9236-A92493A6FA6C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>FA59734B-0D93-4DEE-9236-A92493A6FA6C</key>
+		<array/>
+	</dict>
+	<key>createdby</key>
+	<string>Vitaliy Ribachenko</string>
+	<key>description</key>
+	<string>Handy helper for evaluating simple JS code</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Evaluate JavaScript</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>js</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>1</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>Evaluating</string>
+				<key>script</key>
+				<string>query=$1
+execResult=$($interpreter -p "$query" 2&gt;&amp;1)
+exitCode=${PIPESTATUS[0]}
+result=$(if [ $exitCode = 0 ]; then echo $execResult; else echo "Error"; fi)
+
+cat &lt;&lt; EOB
+{ "items": [
+	{
+        "type": "default",
+        "title": "$(echo $result)",
+        "arg": "$(echo $result)"
+	}
+]}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>evaluate.sh</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Enter JavaScript code to evaluate</string>
+				<key>type</key>
+				<integer>8</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>A1BF786D-2528-41FB-9E97-EF303E243BD0</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>FA59734B-0D93-4DEE-9236-A92493A6FA6C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>You can evaluate JavaScript right within your Alfred.
+
+This workflow uses NodeJS for evaluating your JavaScript, so you need to pass path for your NodeJS interpreter. Look for interpreter variable in Workflow Environment Variables
+
+© Vitaliy Ribachenko (http://ribachenko.com)</string>
+	<key>uidata</key>
+	<dict>
+		<key>A1BF786D-2528-41FB-9E97-EF303E243BD0</key>
+		<dict>
+			<key>xpos</key>
+			<integer>220</integer>
+			<key>ypos</key>
+			<integer>90</integer>
+		</dict>
+		<key>FA59734B-0D93-4DEE-9236-A92493A6FA6C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>390</integer>
+			<key>ypos</key>
+			<integer>90</integer>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>interpreter</key>
+		<string>/usr/local/bin/node</string>
+	</dict>
+	<key>version</key>
+	<string>1.0</string>
+	<key>webaddress</key>
+	<string>http://ribachenko.com</string>
+</dict>
+</plist>

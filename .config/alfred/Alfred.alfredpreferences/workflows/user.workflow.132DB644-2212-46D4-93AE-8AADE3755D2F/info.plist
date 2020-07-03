@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.runningwithcrayons.andrew.shouldiwatchthismovie</string>
+	<key>category</key>
+	<string>Internet</string>
+	<key>connections</key>
+	<dict>
+		<key>F8C5D133-7C4D-44F2-845B-FAE1568A09E7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>08CDF7D0-6E98-4748-995B-C822EA0E3A62</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Andrew Pepperrell</string>
+	<key>description</key>
+	<string>Use keyword "movie" to open a trailer in YouTube, details in IMDB &amp; ratings in Rotten Tomatoes</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Should I watch this movie?</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>movie</string>
+				<key>subtext</key>
+				<string>Open movie details in YouTube, IMDB &amp; Rotten Tomatoes</string>
+				<key>text</key>
+				<string>Show details for movie '{query}'</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>F8C5D133-7C4D-44F2-845B-FAE1568A09E7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string>+</string>
+				<key>url</key>
+				<string>http://www.rottentomatoes.com/search/?search={query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>08CDF7D0-6E98-4748-995B-C822EA0E3A62</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Created by the Alfred team!</string>
+	<key>uidata</key>
+	<dict>
+		<key>08CDF7D0-6E98-4748-995B-C822EA0E3A62</key>
+		<dict>
+			<key>xpos</key>
+			<integer>315</integer>
+			<key>ypos</key>
+			<integer>180</integer>
+		</dict>
+		<key>F8C5D133-7C4D-44F2-845B-FAE1568A09E7</key>
+		<dict>
+			<key>xpos</key>
+			<integer>50</integer>
+			<key>ypos</key>
+			<integer>180</integer>
+		</dict>
+	</dict>
+	<key>version</key>
+	<string>1.0</string>
+	<key>webaddress</key>
+	<string>http://www.alfredapp.com</string>
+</dict>
+</plist>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>ipinfo.io</string>
+	<key>category</key>
+	<string>Internet</string>
+	<key>connections</key>
+	<dict>
+		<key>79396A58-6CBD-47DB-A270-41AF2A4FA0E1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0393243C-36C6-4A1E-A8D1-342E37FC6894</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>@coderholic</string>
+	<key>description</key>
+	<string>IP address, asn, geolocation and hostname</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>IP address info</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>ipinfo</string>
+				<key>runningsubtext</key>
+				<string>Please Wait</string>
+				<key>script</key>
+				<string>require_once('workflows.php');
+$w = new Workflows();
+$url = "http://ipinfo.io/{query}";
+$json = $w-&gt;request( $url );
+$details = json_decode( $json );
+
+$w-&gt;result(
+  "http://ipinfo.io/{$details-&gt;ip}",
+  "http://ipinfo.io/{$details-&gt;ip}",
+  $details-&gt;ip,
+  "IP Address",
+  ""
+ );
+
+$w-&gt;result(
+  "http://ipinfo.io/{$details-&gt;ip}",
+  "http://ipinfo.io/{$details-&gt;ip}",
+  $details-&gt;hostname,
+  "hostname",
+  ""
+ );
+
+$w-&gt;result(
+  "http://ipinfo.io/{$details-&gt;ip}",
+  "http://ipinfo.io/{$details-&gt;ip}",
+  implode(", ", array($details-&gt;city, $details-&gt;region, $details-&gt;country)),
+  "location",
+  ""
+ );
+
+
+$w-&gt;result(
+  "http://ipinfo.io/{$details-&gt;ip}",
+  "http://ipinfo.io/{$details-&gt;ip}",
+  $details-&gt;org,
+  "Organization",
+  ""
+ );
+
+echo $w-&gt;toxml();</string>
+				<key>subtext</key>
+				<string>IP address information from http://ipinfo.io</string>
+				<key>title</key>
+				<string>IP address information</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>79396A58-6CBD-47DB-A270-41AF2A4FA0E1</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>plusspaces</key>
+				<false/>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>0393243C-36C6-4A1E-A8D1-342E37FC6894</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>0393243C-36C6-4A1E-A8D1-342E37FC6894</key>
+		<dict>
+			<key>ypos</key>
+			<real>330</real>
+		</dict>
+		<key>79396A58-6CBD-47DB-A270-41AF2A4FA0E1</key>
+		<dict>
+			<key>ypos</key>
+			<real>220</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://ipinfo.io</string>
+</dict>
+</plist>

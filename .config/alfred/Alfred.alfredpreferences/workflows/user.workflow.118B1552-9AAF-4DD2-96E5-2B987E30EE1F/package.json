@@ -1,0 +1,78 @@
+{
+  "_from": "alfred-caniuse",
+  "_id": "alfred-caniuse@0.5.1",
+  "_inBundle": false,
+  "_integrity": "sha512-g3REV9sGXug/8hRFd9iXmT5IO93QeGAVqRqhM8jum5l7wBndVvYK6lPJyI7NJA1S6IFHuAK/3tcr/APR11bbTw==",
+  "_location": "/alfred-caniuse",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "alfred-caniuse",
+    "name": "alfred-caniuse",
+    "escapedName": "alfred-caniuse",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/alfred-caniuse/-/alfred-caniuse-0.5.1.tgz",
+  "_shasum": "2a647106d29a811d397f82dc37e373a6c3294f03",
+  "_spec": "alfred-caniuse",
+  "_where": "/Users/joshuadavenport",
+  "author": {
+    "name": "robjtede"
+  },
+  "bugs": {
+    "url": "https://github.com/robjtede/alfred-caniuse/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@robjtede/alfy": "^0.8.0",
+    "browserslist": "^4.8.6",
+    "fuse.js": "^3.4.4"
+  },
+  "deprecated": false,
+  "description": "caniuse.com search and quick reference",
+  "devDependencies": {
+    "eclint": "^2.8.1",
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.6",
+    "prettier": "^1.17.0",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "homepage": "https://github.com/robjtede/alfred-caniuse#readme",
+  "keywords": [
+    "alfred",
+    "caniuse",
+    "can",
+    "i",
+    "use",
+    "workflow",
+    "extension",
+    "plugin",
+    "afredapp"
+  ],
+  "license": "ISC",
+  "main": "./dist/bundle.js",
+  "module": "./src/index.js",
+  "name": "alfred-caniuse",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robjtede/alfred-caniuse.git"
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development --watch",
+    "postinstall": "alfy-init",
+    "preuninstall": "alfy-cleanup",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.5.1"
+}

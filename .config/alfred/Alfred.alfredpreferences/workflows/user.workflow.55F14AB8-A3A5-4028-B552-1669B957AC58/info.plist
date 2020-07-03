@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>hu.fns.soco_alfred</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>1E5A3C15-8011-4F74-92AB-4C45F76EA153</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7BFD563D-FC3C-4604-8BA8-19B56B9D5826</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>32A727A7-3FF1-46A6-9E72-51F0009E91AB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1E5A3C15-8011-4F74-92AB-4C45F76EA153</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>7BFD563D-FC3C-4604-8BA8-19B56B9D5826</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5850161C-4D79-4F0D-AA35-9A9AB9F05752</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Gabor Penoff</string>
+	<key>description</key>
+	<string>Sonos Controller for Alfred</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Sonos Controller</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>import os
+import sys
+import soco
+from soco import SoCo
+
+query = sys.argv[1]
+
+if query[:3] == "vol":
+	vol = int(query[3:])
+	query = "vol"
+
+def perform_action(query, zone, apply_on_parent):
+	if query	 == "play":
+		if apply_on_parent:
+			zone.group.coordinator.play()
+		else:
+			zone.play()
+	elif query == "pause":
+		if apply_on_parent:
+			zone.group.coordinator.pause()
+		else:
+			zone.pause()
+	elif query == "vol":
+		sys.stderr.write(zone.ip_address + " setting vol to " + str(vol))
+		zone.volume = vol
+	elif query == "inc":
+		zone.volume = zone.volume + 3
+	elif query == "dec":
+		zone.volume = zone.volume - 3
+	elif query == "next":
+		if apply_on_parent:
+			zone.group.coordinator.next()
+		else:
+			zone.next()
+
+if query	 == "party":
+	devices = soco.discovery.any_soco()
+	devices.partymode()
+else:
+	speaker = os.getenv("speaker")
+	if speaker == "":
+		for zone in soco.discover():
+			perform_action(query, zone, True)
+	else:
+		perform_action(query, SoCo(speaker), False)</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>5850161C-4D79-4F0D-AA35-9A9AB9F05752</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>keyword</key>
+				<string>sc</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>import os
+import soco 
+from soco import SoCo
+import sys
+from workflow import Workflow3
+
+def load_items(vol):
+	items = []
+	
+	if os.getenv("speaker") == "":
+		sname = "\"All\""
+	else:
+		sname = "\"" + SoCo(os.getenv("speaker")).player_name + "\""
+
+	items.append({"title":"Play on " + sname + ": [play]", "subtitle":"play", "icon":"img/play.png", "valid":True, "arg":"play"})
+	items.append({"title":"Pause on " + sname + ": [pause]", "subtitle":"pause", "icon":"img/pause.png", "valid":True, "arg":"pause"})
+	if 0 &lt;= vol &lt;= 100:
+		items.append({"title":"Set Volume on " + sname + ": [vol] [" + str(vol)+ "]", "subtitle":"set volume", "icon":"img/volume.png", "valid": True, "arg":"vol" + str(vol)})
+	else:
+		items.append({"title":"Set Volume on " + sname + ": [vol] [?]", "subtitle":"specify 0-100 as second parameter for target volume", "icon":"img/volume.png", "valid":False, "arg":"vol" + str(vol)})
+
+	items.append({"title":"Volume + on " + sname + ": [inc]", "subtitle":"Increase volume", "icon":"img/volume_up.png", "valid":True, "arg":"inc"})
+	items.append({"title":"Volume - on " + sname + ": [dec]", "subtitle":"Decrease volume", "icon":"img/volume_down.png", "valid":True, "arg":"dec"})
+
+	#items.append({"title":"Partymode: [party]", "subtitle":"Switch on partymode", "icon":"img/party.png", "valid":True, "arg":"party"})
+
+	items.append({"title":"Next track on " + sname + ": [next]", "subtitle":"Skip to next track", "icon":"img/next.png", "valid":True, "arg":"next"})
+
+	return items
+
+def key_for_item(item):
+    return '{}'.format(item['arg'])
+
+def getvol(query):
+	vol = -1
+	if query.find(" ") &lt; 0:
+		q = query
+		vol = -1
+	else:
+		q = query[:query.find(" ")]
+		vol = -1
+		if query[-1] != " ":
+			if query[query.find(" ")+1:].isdigit():
+				vol = int(query[query.find(" ")+1:])
+				if not (0 &lt;= vol &lt;= 100):
+					vol = -1
+	return vol;
+	
+def main(wf):
+	query = None  # Ensure `query` is initialised
+	speaker = os.getenv("speaker")
+
+	sys.stderr.write("SPEAKER=[" + speaker + "]\n")
+
+	# Set `query` if a value was passed (it may be an empty string)
+	if len(wf.args):
+		query = wf.args[0]
+	
+	vol = -1
+	if query:
+		if query.isdigit():
+			if (0 &lt;= int(query) &lt;= 100):
+				vol = int(query)
+			query = "vol"
+		else:	
+			vol = getvol(query)
+
+	items = load_items(vol)
+
+	if query:
+		sys.stderr.write("\nQUERY=[" + query + "]\n")
+
+		if query.find(" ") &lt; 0:
+			q = query
+		else:
+			q = query[:query.find(" ")]
+
+		items = wf.filter(q, items, key_for_item)
+		sys.stderr.write("\nVOLUME=[" + str(vol) + "]\n")	
+	if not items:
+		wf.add_item("Unknown command:" + query, icon="img/error.png", valid=False)
+
+	for item in items:
+		wf.add_item(title=item["title"], subtitle=item["subtitle"], icon=item["icon"], arg=item["arg"], valid=item["valid"])
+
+	wf.send_feedback()
+
+if __name__ == u"__main__":
+
+	wf = Workflow3()
+	sys.exit(wf.run(main))</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Sonos Control - all speakers</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7BFD563D-FC3C-4604-8BA8-19B56B9D5826</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>keyword</key>
+				<string>scs</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>import soco 
+from soco import SoCo
+import sys
+from workflow import Workflow
+
+#	for zone in soco.discover():
+#		wf.add_item(title=zone.player_name, subtitle="", icon="")
+
+def load_items():
+	items = []
+	for speaker in soco.discover():
+		s=speaker.get_speaker_info()
+		items.append({"title":s["zone_name"] + "...", "subtitle":s["model_name"] + " - " + speaker.ip_address, "icon":"img/speaker.png", "arg":speaker.ip_address, "valid": True})
+
+	return items
+
+def main(wf):
+	query = None  # Ensure `query` is initialised
+
+	# Set `query` if a value was passed (it may be an empty string)
+	if len(wf.args):
+		query = wf.args[0]
+		
+	items = load_items()
+	if query:
+		items = wf.filter(query, items)
+
+	if not items:
+		wf.add_item("Unknown spaker:" + query, icon="img/error.png")
+
+	for item in items:
+		wf.add_item(title=item["title"], subtitle=item["subtitle"], icon=item["icon"], valid=item["valid"], arg=item["arg"])
+
+	wf.send_feedback()
+
+if __name__ == u"__main__":
+	wf = Workflow()
+	sys.exit(wf.run(main))</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Sonos Control - individual speakers</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>32A727A7-3FF1-46A6-9E72-51F0009E91AB</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>variables</key>
+				<dict>
+					<key>speaker</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>1E5A3C15-8011-4F74-92AB-4C45F76EA153</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>SONOS Controller for Alfred
+
+I wrote this workflow to control some basic function of my SONOS speakers from Alfred. This workflow depends on the excellent SoCo Python class: https://github.com/SoCo/SoCo so install it. I did not embed SoCo into the workflow because I'm using in other projects as well.
+I also used deanishe's Alfrew Workflow helper library: https://github.com/deanishe/alfred-workflow Many thanks for this wonderful tool!
+
+There are two keywords implemented in this Sonos Control workflow:
+- sc: apply commands to all speakers
+- scs: select a zone first and then apply the basic commands on the selected zones. 
+
+You can select the commands from the appearing menu or just type their keywords after sc (command keywords are in square brackets) such as:
+sc play: starts playback
+sc pause: pauses playback 
+sc inc: increases volume by 5%
+sc dec: decreases volume by 5%
+sc next: skips to next track
+sc vol {numeric value between 0-100}: sets volume to specified percentage
+
+Changelog:
+
+v1.0
+	+ Initial version.</string>
+	<key>uidata</key>
+	<dict>
+		<key>1E5A3C15-8011-4F74-92AB-4C45F76EA153</key>
+		<dict>
+			<key>xpos</key>
+			<integer>250</integer>
+			<key>ypos</key>
+			<integer>70</integer>
+		</dict>
+		<key>32A727A7-3FF1-46A6-9E72-51F0009E91AB</key>
+		<dict>
+			<key>xpos</key>
+			<integer>30</integer>
+			<key>ypos</key>
+			<integer>40</integer>
+		</dict>
+		<key>5850161C-4D79-4F0D-AA35-9A9AB9F05752</key>
+		<dict>
+			<key>xpos</key>
+			<integer>640</integer>
+			<key>ypos</key>
+			<integer>35</integer>
+		</dict>
+		<key>7BFD563D-FC3C-4604-8BA8-19B56B9D5826</key>
+		<dict>
+			<key>xpos</key>
+			<integer>400</integer>
+			<key>ypos</key>
+			<integer>40</integer>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>speaker</key>
+		<string></string>
+	</dict>
+	<key>version</key>
+	<string>1.0</string>
+	<key>webaddress</key>
+	<string>https://fns.csokolade.hu</string>
+</dict>
+</plist>
