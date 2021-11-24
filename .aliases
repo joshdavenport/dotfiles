@@ -1,5 +1,7 @@
 # Aliases
 alias ls='lsd'
+alias lsdr='lsd --date="relative" -tr'
+alias h='history'
 
 # tmux
 alias t="tmux"
@@ -50,3 +52,10 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 # hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# production stuff
+alias morphagenemv="gls -v | cat -n | while read n f; do mv -n \"\$f\" \"mg\$n.wav\"; done"
+
+# oft-tasks shortcuts
+alias vickymv="rsync -ra --checksum /Volumes/VICKY/DCIM/100_FUJI/*.JPG /Users/joshuadavenport/temp/vicky --include=\"*.JPG\""
+alias vickyrm="rm /Volumes/VICKY/DCIM/100_FUJI/*.JPG && rm /Users/joshuadavenport/temp/vicky/*.JPG"
