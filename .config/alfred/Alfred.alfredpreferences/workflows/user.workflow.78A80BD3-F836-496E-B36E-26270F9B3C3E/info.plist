@@ -39,6 +39,12 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -87,7 +93,7 @@ cat &lt;&lt; EOB
 			<key>uid</key>
 			<string>A1BF786D-2528-41FB-9E97-EF303E243BD0</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -96,6 +102,8 @@ cat &lt;&lt; EOB
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -104,7 +112,7 @@ cat &lt;&lt; EOB
 			<key>uid</key>
 			<string>FA59734B-0D93-4DEE-9236-A92493A6FA6C</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -133,7 +141,7 @@ This workflow uses NodeJS for evaluating your JavaScript, so you need to pass pa
 	<key>variables</key>
 	<dict>
 		<key>interpreter</key>
-		<string>/usr/local/bin/node</string>
+		<string>/Users/joshuadavenport/.nvm/versions/node/v14.17.3/bin/node</string>
 	</dict>
 	<key>version</key>
 	<string>1.0</string>
