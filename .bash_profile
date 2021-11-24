@@ -18,3 +18,6 @@ if [ -x /usr/local/bin/figlet -a -x /usr/local/bin/lolcat -a -x /usr/local/bin/f
     fortune ~/.fortune/
     echo ''
 fi
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+. "$HOME/.cargo/env"
