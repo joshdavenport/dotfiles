@@ -1,5 +1,5 @@
 [user]
-	name = Josh Davenport
+	name = Josh Davenport-Smith
 	email = josh.davenport@tghp.co.uk
 [core]
 	autocrlf = input
@@ -36,3 +36,5 @@
 	ui = auto
 [advice]
 	statusHints = true
+[init]
+	defaultBranch = main
