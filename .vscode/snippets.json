@@ -1,0 +1,12 @@
+{
+  "html": {
+    "snippets": {
+    }
+  },
+  "css": {
+    "snippets": {
+      "gtc": "grid-template-columns",
+      "gtr": "grid-template-rows"
+    }
+  }
+}
