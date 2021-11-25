@@ -7,6 +7,25 @@ function homestead() {
     (cd ~/Homestead && vagrant $*)
 }
 
+function servers() {
+    original_dir=$(pwd);
+    echo "\033[0;32m# HOMESTEAD\033[0m";
+    homestead status;
+    echo "";
+    echo "\033[0;32m# WIND\033[0m";
+    cd && ~/sites/wind/ && bin/status;
+    echo "";
+    echo "\033[0;32m# WOLF\033[0m";
+    cd && ~/sites/wolf/ && bin/status;
+    echo "";
+    echo "\033[0;32m# CONDOR B2C\033[0m";
+    cd && ~/sites/condor-group/ && bin/status;
+    echo "";
+    echo "\033[0;32m# CONDOR B2B\033[0m";
+    cd && ~/sites/condor-b2b/ && bin/status;
+    cd "$original_dir";
+}
+
 # useful for svn
 vsort() {
     sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n $1
