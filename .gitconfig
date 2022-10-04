@@ -3,6 +3,15 @@
 	email = josh.davenport@tghp.co.uk
 [core]
 	autocrlf = input
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+[merge]
+	conflictstyle = diff3
+[diff]
+	colorMoved = default
 [alias]
 	# http://caiustheory.com/git-git-git-git-git/
 	git = "!exec git"
@@ -38,3 +47,8 @@
 	statusHints = true
 [init]
 	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
