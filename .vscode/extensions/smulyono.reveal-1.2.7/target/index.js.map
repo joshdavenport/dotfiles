@@ -1,1 +1,0 @@
-{"version":3,"sources":["../src/index.js"],"names":["exports","activate","deactivate"],"mappings":";;AAAA;;AAEAA,QAAQC,QAAR;AACAD,QAAQE,UAAR","file":"index.js","sourcesContent":["import {activate, deactivate } from './extension';\n\nexports.activate = activate;\nexports.deactivate = deactivate;"]}

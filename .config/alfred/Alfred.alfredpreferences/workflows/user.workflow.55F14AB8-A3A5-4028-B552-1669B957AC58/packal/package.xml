@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>SONOS Controller</name>
-  <version>1.0</version>
-  <bundle>hu.fns.soco_alfred</bundle>
-  <updated>1481860180</updated>
-  <file>sonos_controller.alfredworkflow</file>
-</workflow>
