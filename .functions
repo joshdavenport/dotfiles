@@ -1,10 +1,26 @@
+lipsum () {
+  lorem --cols 0 -s $1 | sed -e 's/[?!;]/./g'
+}
+
+clipsum () {
+  lipsum $1 | pbcopy
+}
+
 zshcolors() {
   for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"
 }
 
+function hgrep() {
+    (history | grep $*)
+}
+
 # homestead
-function homestead() {
-    (cd ~/Homestead && vagrant $*)
+function hs() {
+    if [[ $@ == "edit" ]]; then
+       command vim ~/Homestead/Homestead.yaml
+    else
+       (cd ~/Homestead && vagrant $*)
+    fi
 }
 
 function servers() {
@@ -44,4 +60,25 @@ function mkd() {
 # Run `dig` and display the most useful info
 function digga() {
     dig +nocmd "$1" any +multiline +noall +answer;
+}
+
+# update phpenv with local version installed by homebrew
+phpenv_versions_rehash() {
+  local _php_path;
+  local _php_full_ver;
+  local _php_version;
+
+  for _php_path in "$(brew --cellar)"/php*/[0-9].[0-9].*; do
+    _php_full_ver="${_php_path##*/}";
+    _php_version="${_php_full_ver%.*}";
+    unlink "${HOME}/.phpenv/versions/${_php_version}" 2>/dev/null || true
+    ln -s "${_php_path}" "${HOME}/.phpenv/versions/${_php_version}" 2>/dev/null || true
+  done
+
+  phpenv rehash
+}
+
+# app stuff
+function open_lastfm_maybe() {
+  if [ `ps aux | grep 'Last.fm' | grep -v 'grep' | wc -l` -lt 1 ]; then; open -jga /Applications/Last.fm.app; fi;
 }

@@ -10,6 +10,7 @@ alias t="tmux"
 alias projectgu="cd ~/www/giftuniverse/giftuniverse_rm && itermocil giftuniverse --here"
 
 # general
+alias hosts='sudo vim /etc/hosts'
 alias rid='head -n 1 /dev/random | md5 | cut -c 1-8'
 alias crid="rid | tr -d '\n' | pbcopy"
 alias pwdcp="pwd | pbcopy"
@@ -30,6 +31,7 @@ alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias vim="nvim"
 alias photoshop="open -a /Applications/Adobe\ Photoshop\ CC\ 2017/Adobe\ Photoshop\ CC\ 2017.app/Contents/MacOS/Adobe\ Photoshop\ CC\ 2017"
 alias getanicenewwallpaper="wget https://source.unsplash.com/random/1920x1200/\?minimal --output-document=$(date +%s).jpg"
+alias btrestart="blueutil -p 0 && sleep 5 && blueutil -p 1"
 
 # common ls/rm aliases
 # Detect which `ls` flavor is in use
@@ -59,3 +61,7 @@ alias morphagenemv="gls -v | cat -n | while read n f; do mv -n \"\$f\" \"mg\$n.w
 # oft-tasks shortcuts
 alias vickymv="rsync -ra --checksum /Volumes/VICKY/DCIM/100_FUJI/*.JPG /Users/joshuadavenport/temp/vicky --include=\"*.JPG\""
 alias vickyrm="rm /Volumes/VICKY/DCIM/100_FUJI/*.JPG && rm /Users/joshuadavenport/temp/vicky/*.JPG"
+
+# music 
+alias qrec="ffmpeg -f avfoundation -i \":0\" ~/Documents/rec_\$(date \"+%F_%H-%M-%S\").mp3"
+alias bcdl="bandcamp-dl --embed-art"
