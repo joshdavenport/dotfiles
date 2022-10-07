@@ -15,7 +15,7 @@ set incsearch
 set nowrap
 set noswapfile
 set scrolloff=8
-set cmdheight=2
+"set cmdheight=1
 set signcolumn=yes
 
 " line numbers
