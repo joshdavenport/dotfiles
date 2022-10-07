@@ -5,12 +5,15 @@ alias h='history'
 
 # tmux
 alias t="tmux"
+alias ta="tmux attach"
+alias td="tmux detach"
 
 # projects
 alias projectgu="cd ~/www/giftuniverse/giftuniverse_rm && itermocil giftuniverse --here"
 
 # general
-alias hosts='sudo vim /etc/hosts'
+alias hostedit='sudo vim /etc/hosts'
+alias sshedit='vim ~/.ssh/config'
 alias rid='head -n 1 /dev/random | md5 | cut -c 1-8'
 alias crid="rid | tr -d '\n' | pbcopy"
 alias pwdcp="pwd | pbcopy"
