@@ -12,7 +12,7 @@ alias td="tmux detach"
 alias projectgu="cd ~/www/giftuniverse/giftuniverse_rm && itermocil giftuniverse --here"
 
 # general
-alias hostedit='sudo vim /etc/hosts'
+alias hostsedit='sudo nvim /etc/hosts'
 alias sshedit='vim ~/.ssh/config'
 alias rid='head -n 1 /dev/random | md5 | cut -c 1-8'
 alias crid="rid | tr -d '\n' | pbcopy"

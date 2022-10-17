@@ -21,7 +21,7 @@ function hgrep() {
 # homestead
 function hs() {
     if [[ $@ == "edit" ]]; then
-       command vim ~/Homestead/Homestead.yaml
+       command nvim ~/Homestead/Homestead.yaml
     else
        (cd ~/Homestead && vagrant $*)
     fi
