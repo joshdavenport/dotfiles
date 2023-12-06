@@ -1,15 +1,13 @@
 # Aliases
+alias cd='z'
 alias ls='lsd'
 alias lsdr='lsd --date="relative" -tr'
 alias h='history'
 
 # tmux
 alias t="tmux"
-alias ta="tmux attach"
+alias ta="tmux attach ~/"
 alias td="tmux detach"
-
-# projects
-alias projectgu="cd ~/www/giftuniverse/giftuniverse_rm && itermocil giftuniverse --here"
 
 # general
 alias hostsedit='sudo nvim /etc/hosts'
@@ -18,19 +16,21 @@ alias rid='head -n 1 /dev/random | md5 | cut -c 1-8'
 alias crid="rid | tr -d '\n' | pbcopy"
 alias pwdcp="pwd | pbcopy"
 alias timestamp="date '+%s'"
+alias grep="ggrep"
 
 # Easier navigation: .., ..., ~ and -
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
+alias ..="z .."
+alias ...="z ../.."
+alias ....="z ../../.."
+alias .....="z ../../../.."
+alias ~="z ~" # `cd` is probably faster to type though
+alias -- -="z -"
 
 # chrome, mainly supports chrome headless
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
 # because
+alias pn="pnpm"
 alias vim="nvim"
 alias photoshop="open -a /Applications/Adobe\ Photoshop\ CC\ 2017/Adobe\ Photoshop\ CC\ 2017.app/Contents/MacOS/Adobe\ Photoshop\ CC\ 2017"
 alias getanicenewwallpaper="wget https://source.unsplash.com/random/1920x1200/\?minimal --output-document=$(date +%s).jpg"

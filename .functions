@@ -1,3 +1,8 @@
+tc () {
+    tmux new-window -n "$@"
+    tmux send-keys -t "$@" "j $@" C-m
+}
+
 rwdefine () {
     open "https://en.wiktionary.org/wiki/$RANDOMWORD"
 }
@@ -18,10 +23,23 @@ function hgrep() {
     (history | grep $*)
 }
 
+function spicetify() {
+    if [[ $@ == "go" ]]; then
+       command spicetify backup
+       command spicetify apply
+    else
+       spicetify $*
+    fi
+}
+
 # homestead
 function hs() {
     if [[ $@ == "edit" ]]; then
        command nvim ~/Homestead/Homestead.yaml
+    elif [[ $@ == "start" ]]; then
+       (cd ~/Homestead && vagrant up)
+    elif [[ $@ == "stop" ]]; then
+       (cd ~/Homestead && vagrant halt)
     else
        (cd ~/Homestead && vagrant $*)
     fi
@@ -80,9 +98,4 @@ phpenv_versions_rehash() {
   done
 
   phpenv rehash
-}
-
-# app stuff
-function open_lastfm_maybe() {
-  if [ `ps aux | grep 'Last.fm' | grep -v 'grep' | wc -l` -lt 1 ]; then; open -jga /Applications/Last.fm.app; fi;
 }

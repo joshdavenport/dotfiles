@@ -73,12 +73,12 @@
     status                  # exit code of the last command
     dir                     # current directory
     vcs                     # git status
+    phpenv                 # php version from phpenv (https://github.com/phpenv/phpenv)
     node_version
     #npmversion
     package
     gulpfile
     vite
-    phpenv                 # php version from phpenv (https://github.com/phpenv/phpenv)
     # =========================[ Line #2 ]=========================
     newline                 # \n
     prompt_char             # prompt symbol
@@ -140,7 +140,6 @@
     #vpn_ip                # virtual private network indicator
     
     
-    #ram                   # free RAM
     #swap                  # used swap
     #todo                   # todo items (https://github.com/todotxt/todo.txt-cli)
     #timewarrior            # timewarrior tracking status (https://timewarrior.net/)
@@ -149,6 +148,7 @@
     disk_usage            # disk usage
     load                  # CPU load
     battery               # internal battery
+    ram                   # free RAM
     
     # =========================[ Line #2 ]=========================
     newline
@@ -864,8 +864,11 @@
 
   ######################################[ ram: free RAM ]#######################################
   # RAM color.
-  typeset -g POWERLEVEL9K_RAM_FOREGROUND=0
-  typeset -g POWERLEVEL9K_RAM_BACKGROUND=3
+  #typeset -g POWERLEVEL9K_BATTERY_LOW_THRESHOLD=25
+  #
+  #typeset -g POWERLEVEL9K_BATTERY_LOW_BACKGROUND=9
+  #typeset -g POWERLEVEL9K_RAM_FOREGROUND=25
+  typeset -g POWERLEVEL9K_RAM_BACKGROUND=15
   # Custom icon.
   # typeset -g POWERLEVEL9K_RAM_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -1659,7 +1662,7 @@
   # Show battery in yellow when it's discharging.
   typeset -g POWERLEVEL9K_BATTERY_DISCONNECTED_FOREGROUND=0
   # Battery pictograms going from low to high level of charge.
-  typeset -g POWERLEVEL9K_BATTERY_STAGES='\uf58d\uf579\uf57a\uf57b\uf57c\uf57d\uf57e\uf57f\uf580\uf581\uf578'
+  typeset -g POWERLEVEL9K_BATTERY_STAGES='\uf244\uf242\uf240'
   # Show the remaining time to charge/discharge.
   typeset -g POWERLEVEL9K_BATTERY_VERBOSE=true
   typeset -g POWERLEVEL9K_BATTERY_BACKGROUND=15
