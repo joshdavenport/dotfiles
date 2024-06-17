@@ -31,6 +31,7 @@ alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
 # because
 alias pn="pnpm"
+alias pnx="pnpx"
 alias vim="nvim"
 alias photoshop="open -a /Applications/Adobe\ Photoshop\ CC\ 2017/Adobe\ Photoshop\ CC\ 2017.app/Contents/MacOS/Adobe\ Photoshop\ CC\ 2017"
 alias getanicenewwallpaper="wget https://source.unsplash.com/random/1920x1200/\?minimal --output-document=$(date +%s).jpg"
